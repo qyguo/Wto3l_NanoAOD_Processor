@@ -36,8 +36,8 @@ class wvAnalysisProducer(Module):
         """
         electrons = Collection(event, "Electron")
         muons = Collection(event, "Muon")
-        jets = Collection(event, "Jet")
-        fatJets = Collection(event, "FatJet")
+        #jets = Collection(event, "Jet")
+        #fatJets = Collection(event, "FatJet")
         keepIt = True
         eventElectrons = 0
         eventMuons = 0
@@ -45,19 +45,21 @@ class wvAnalysisProducer(Module):
         eventFatJets = 0
         
         for lep in muons :
-            if lep.tightId and lep.pt > 10 :
+            if lep.tightId and lep.pt > 5 :
                 eventMuons += 1
         for lep in electrons :
-            if lep.cutBased >= 2 and lep.pt > 10 :
+            if lep.cutBased >= 2 and lep.pt > 5 :
                 eventElectrons += 1
-        for jet in jets :
-            if jet.pt > 20:
-               eventJets += 1
-        for fatjet in fatJets :
-            if fatjet.pt > 20:
-               eventFatJets += 1
+        #for jet in jets :
+        #    if jet.pt > 20:
+        #       eventJets += 1
+        #for fatjet in fatJets :
+        #    if fatjet.pt > 20:
+        #       eventFatJets += 1
         
-        if not ( ((eventElectrons >= 1 or eventMuons >=1)) and ( (eventJets >= 2 and eventFatJets >= 1) or (eventJets >= 4 and eventFatJets == 0) )  ):
+        #if not ( ((eventElectrons >= 1 or eventMuons >=1)) and ( (eventJets >= 2 and eventFatJets >= 1) or (eventJets >= 4 and eventFatJets == 0) )  ):
+        #    keepIt = False
+        if not ((eventElectrons >=2) or (eventMuons >= 2)):
             keepIt = False
         
         return keepIt

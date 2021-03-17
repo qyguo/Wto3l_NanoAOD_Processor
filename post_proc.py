@@ -5,7 +5,9 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.postprocessor import Pos
 from wvAnalysisModule import *
 from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 import *
 
-testfile = "root://cms-xrd-global.cern.ch//store/data/Run2018A/SingleMuon/NANOAOD/Nano25Oct2019-v1/20000/D03C6AE0-73AD-A940-B8CA-779A621D4853.root"
+#testfile = "root://cms-xrd-global.cern.ch//store/data/Run2018A/SingleMuon/NANOAOD/Nano25Oct2019-v1/20000/D03C6AE0-73AD-A940-B8CA-779A621D4853.root"
+testfile = "root://cms-xrd-global.cern.ch//store/data/Run2017D/DoubleMuon/NANOAOD/Nano25Oct2019-v1/30000/250D3DC4-9180-4A4D-A9F3-823FB8CA82D2.root"
+#testfile = "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/WJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/0E62152C-8DC8-B940-B84F-21F4296AD5CC.root"
 
 
 entriesToRun = 0  # 0 if need to run over all entries else put number of entries to run
@@ -27,9 +29,9 @@ if testfile.find("SingleMuon") != -1 or testfile.find("EGamma") != -1 or testfil
     jsonFileName="Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt"
   print "\n===> Running over ",Year," data...\n"
   print "===> JSON File: ",jsonFileName
-  jetmetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=Year, jesUncert="All", redojec=True, jetType = "AK4PFchs")
-  fatJetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=Year, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
-  p=PostProcessor(".",[testfile],None,None,[wvAnalysisModule(),jetmetCorrector(),fatJetCorrector()],provenance=False,fwkJobReport=False,jsonInput=jsonFileName,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
+  #jetmetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=Year, jesUncert="All", redojec=True, jetType = "AK4PFchs")
+  #fatJetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=Year, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
+  p=PostProcessor(".",[testfile],None,"keep_and_drop.txt",[wvAnalysisModule()],provenance=False,fwkJobReport=False,jsonInput=jsonFileName,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
 else:
   print "==> Processing a MC file..."
   isMCTrueFalse=True
@@ -39,9 +41,10 @@ else:
   if testfile.find("VVjj_2017v") != -1: year = 2017
   if testfile.find("RunIISummer16NanoAODv") != -1: year = 2016
   if testfile.find("VVjj_2016v") != -1: year = 2016
-  jetmetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK4PFchs")
-  fatJetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
-  p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule(),jetmetCorrector(),fatJetCorrector()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
+  #jetmetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK4PFchs")
+  #fatJetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
+  #p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule(),jetmetCorrector(),fatJetCorrector()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
+  p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
 
 p.run()
 print "DONE"

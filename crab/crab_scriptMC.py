@@ -8,12 +8,10 @@ from PhysicsTools.NanoAODTools.postprocessing.analysis.nanoAOD_vvVBS.wvAnalysisM
 
 from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 import *
 
-jetmetCorrector = createJMECorrector(isMC=True, dataYear=2018, jesUncert="All", redojec=True, jetType = "AK4PFchs")
-fatJetCorrector = createJMECorrector(isMC=True, dataYear=2018, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
+testfile = "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/WJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/0E62152C-8DC8-B940-B84F-21F4296AD5CC.root"
 
-
-#p=PostProcessor(".",inputFiles(),"","keep_and_drop.txt",modules=[wvAnalysisModule()],provenance=True,fwkJobReport=True,jsonInput=runsAndLumis())
-p=PostProcessor(".",inputFiles(),"","keep_and_drop.txt",modules=[jetmetCorrector(),fatJetCorrector(),wvAnalysisModule()],provenance=True,fwkJobReport=True,jsonInput=runsAndLumis())
+p=PostProcessor(".",inputFiles(),"","keep_and_drop_MC.txt",modules=[wvAnalysisModule()],provenance=True,fwkJobReport=True,jsonInput=runsAndLumis())
+#p=PostProcessor(".",[testfile],"","keep_and_drop_MC.txt",modules=[wvAnalysisModule()],provenance=True,fwkJobReport=True,jsonInput=runsAndLumis())
 
 p.run()
 

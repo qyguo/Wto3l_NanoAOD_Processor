@@ -1,32 +1,34 @@
 from WMCore.Configuration import Configuration
-from CRABClient.UserUtilities import config, getUsernameFromSiteDB
+from CRABClient.UserUtilities import config#, getUsernameFromSiteDB
 
 config = Configuration()
 
 config.section_("General")
-config.General.requestName = 'NanoPost1'
-#config.General.workArea = 'crab_project'
-config.General.workArea = '/uscmst1b_scratch/lpc1/3DayLifetime/rasharma/crab_project'
+config.General.requestName = 'DYJetsToLL_M-50_nanoAOD'
+config.General.workArea = 'results'
 config.General.transferLogs=True
+config.General.transferOutputs = True
 config.section_("JobType")
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'PSet.py'
-config.JobType.scriptExe = 'crab_script.sh'
-config.JobType.inputFiles = ['crab_scriptMC.py','../../../../../scripts/haddnano.py','keep_and_drop.txt'] #hadd nano will not be needed once nano tools are in cmssw
+config.JobType.scriptExe = 'crab_scriptMC.sh'
+config.JobType.inputFiles = ['crab_scriptMC.py','../scripts/haddnano.py','keep_and_drop_MC.txt']
 config.JobType.sendPythonFolder     = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_("Data")
-config.Data.inputDataset = '/WJetsToLNu_HT-800To1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16NanoAODv5-PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/NANOAODSIM'
+config.Data.inputDataset = '/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM'
 #config.Data.inputDBS = 'phys03'
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'
 #config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 1
-#config.Data.totalUnits = 10
 
-config.Data.outLFNDirBase = '/store/user/rasharma/NanoAOD_Skimed/2018'
+config.Data.outLFNDirBase = '/store/user/nimenend/NanoAOD/'
 #config.Data.outLFNDirBase = '/store/user/%s/NanoPostTemp' % (getUsernameFromSiteDB())
 config.Data.publication = False
-config.Data.outputDatasetTag = 'NanoTestPost'
+config.Data.ignoreLocality = True
+config.Data.outputDatasetTag = 'DYJetsToLL_M-50_nanoAOD'
+config.section_('User')
 config.section_("Site")
-config.Site.storageSite = "T3_US_FNALLPC"
+config.Site.storageSite = "T2_US_Florida"
+config.Site.whitelist = ['T2_US_*']

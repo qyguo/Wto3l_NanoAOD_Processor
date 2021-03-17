@@ -8,6 +8,6 @@ process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(),
 )
 process.source.fileNames = [ 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAOD/TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_05Feb2018_94X_mcRun2_asymptotic_v2-v1/40000/2CE738F9-C212-E811-BD0E-EC0D9A8222CE.root' ##you can change only this line
 ]
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(111))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(-1))
 process.output = cms.OutputModule("PoolOutputModule", fileName = cms.untracked.string('tree.root'))
 process.out = cms.EndPath(process.output)
