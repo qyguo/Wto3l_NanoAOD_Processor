@@ -13,6 +13,7 @@ config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'PSet.py'
 config.JobType.scriptExe = 'crab_scriptMC.sh'
 config.JobType.inputFiles = ['crab_scriptMC.py','../scripts/haddnano.py','keep_and_drop_MC.txt']
+#config.JobType.inputFiles = ['crab_scriptMC.py','haddnano.py','keep_and_drop_MC.txt']
 config.JobType.sendPythonFolder     = True
 config.JobType.allowUndistributedCMSSW = True
 config.section_("Data")

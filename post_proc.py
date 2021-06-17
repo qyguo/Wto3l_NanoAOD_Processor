@@ -6,13 +6,14 @@ from wvAnalysisModule import *
 from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 import *
 
 #testfile = "root://cms-xrd-global.cern.ch//store/data/Run2018A/SingleMuon/NANOAOD/Nano25Oct2019-v1/20000/D03C6AE0-73AD-A940-B8CA-779A621D4853.root"
-testfile = "root://cms-xrd-global.cern.ch//store/data/Run2017D/DoubleMuon/NANOAOD/Nano25Oct2019-v1/30000/250D3DC4-9180-4A4D-A9F3-823FB8CA82D2.root"
+#testfile = "root://cms-xrd-global.cern.ch//store/data/Run2017D/DoubleMuon/NANOAOD/Nano25Oct2019-v1/30000/250D3DC4-9180-4A4D-A9F3-823FB8CA82D2.root"
 #testfile = "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/WJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/0E62152C-8DC8-B940-B84F-21F4296AD5CC.root"
-
+testfile = "file:"+sys.argv[1]
+outfile = "file:/afs/cern.ch/work/n/nimenend/Wto3l/Data/Signal/CRAB_PrivateMC/"+sys.argv[2]+"/"+os.path.basename(sys.argv[1])
 
 entriesToRun = 0  # 0 if need to run over all entries else put number of entries to run
 isMCTrueFalse = True
-Year = 2016
+Year = 2017
 # Keep DownloadFileToLocalThenRun=True this should reduce the file read error from eos.
 DownloadFileToLocalThenRun=True
 
@@ -44,7 +45,7 @@ else:
   #jetmetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK4PFchs")
   #fatJetCorrector = createJMECorrector(isMC=isMCTrueFalse, dataYear=year, jesUncert="All", redojec=True, jetType = "AK8PFPuppi")
   #p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule(),jetmetCorrector(),fatJetCorrector()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
-  p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName="nano.root",prefetch=DownloadFileToLocalThenRun)
+  p=PostProcessor(".",[testfile],"","keep_and_drop.txt",[wvAnalysisModule()],provenance=True,fwkJobReport=False,maxEntries=entriesToRun,haddFileName=outfile,prefetch=DownloadFileToLocalThenRun)
 
 p.run()
 print "DONE"

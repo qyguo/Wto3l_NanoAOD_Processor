@@ -45,10 +45,10 @@ class wvAnalysisProducer(Module):
         eventFatJets = 0
         
         for lep in muons :
-            if lep.tightId and lep.pt > 5 :
+            if lep.pt > 5 :
                 eventMuons += 1
         for lep in electrons :
-            if lep.cutBased >= 2 and lep.pt > 5 :
+            if lep.pt > 5 :
                 eventElectrons += 1
         #for jet in jets :
         #    if jet.pt > 20:
