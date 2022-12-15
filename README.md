@@ -30,14 +30,18 @@ nanoAOD skiming code for vv semi-leptonic VBS studies
    voms-proxy-init -voms cms
    ```
    
-4. Step: 4: interactive running
+4. Step: 4: Define selections
+
+   You can define the cuts in wvAnalysisModule.py and select which branches to keep in the file (to reduce size and runtime) in keep_and_drop.txt.
+   
+5. Step: 5: interactive running
 
    ```bash
    cd PhysicsTools/NanoAODTools/python/postprocessing/analysis/Wto3l_NanoAOD_Processor
    python post_proc.py
    ```
    
-5. batch job submission.
+6. batch job submission.
    1. Crab-job submission   
       ```bash
       cp -r crab/ ../../../../
@@ -49,7 +53,7 @@ nanoAOD skiming code for vv semi-leptonic VBS studies
       You must run crab from this directory instead of the crab directory inside Wto3l_NanoAOD_Processor. The files inside Wto3l_NanoAOD_Processor are sent when running crab jobs and the files crab creates when running are too large to be sent.
       ```
 
-   2. Step: 5 (b): Condor-job submission
+   2. Step: 6 (b): Condor-job submission
       1. In file `condor_setup.py`, specify correct input text file from which you need to take input NanoAOD DAS names. Also, updated the output EOS path. Then do following:
 
          ```bash
