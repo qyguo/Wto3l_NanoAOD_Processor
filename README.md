@@ -1,5 +1,5 @@
-# nanoAOD_vvVBS
-nanoAOD skiming code for vv semi-leptonic VBS studies
+# Wto3l processor
+nanoAOD skiming code for Z prime search in W3l.
 
 ## Code setup
 
@@ -20,7 +20,7 @@ nanoAOD skiming code for vv semi-leptonic VBS studies
 3. Step: 3: Get our analysis repository
 
    ```bash
-   git clone git@github.com:Nik-Menendez/Wto3l_NanoAOD_Processor.git PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_vvVBS
+   git clone git@github.com:Nik-Menendez/Wto3l_NanoAOD_Processor.git PhysicsTools/NanoAODTools/python/postprocessing/analysis/Wto3l_NanoAOD_Processor
    cd PhysicsTools/NanoAODTools/python/postprocessing/analysis/Wto3l_NanoAOD_Processor
    git submodule init
    git submodule update
@@ -48,7 +48,7 @@ nanoAOD skiming code for vv semi-leptonic VBS studies
       cd ../../../../crab/
       voms-proxy-init -voms cms --valid 200:00
       source /cvmfs/cms.cern.ch/crab3/crab.sh
-      crab submit -c crab_cfg.py
+      crab submit -c crab_cfg.py --proxy `voms-proxy-info -path`
       
       You must run crab from this directory instead of the crab directory inside Wto3l_NanoAOD_Processor. The files inside Wto3l_NanoAOD_Processor are sent when running crab jobs and the files crab creates when running are too large to be sent.
       ```
