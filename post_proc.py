@@ -11,7 +11,11 @@ from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 impor
 #outfile = "file:/afs/cern.ch/work/n/nimenend/Wto3l/Data/Signal/CRAB_PrivateMC/"+sys.argv[2]+"/"+os.path.basename(sys.argv[1])
 #testfile = "file:"+sys.argv[1]
 testfile = "root://cms-xrd-global.cern.ch/"+sys.argv[1]
-outfile = "file:/publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/"+sys.argv[2]+"/"+os.path.basename(sys.argv[1])
+#outfile = "file:/publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/"+sys.argv[2]+"/"+os.path.basename(sys.argv[1])
+outfile = "file:/eos/user/q/qguo/Zprime/UL/2018/Ntuple/"+sys.argv[2]+"/"+os.path.basename(sys.argv[1])
+#outPath = "/publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/"+sys.argv[2]+"/"
+outPath = "/eos/user/q/qguo/Zprime/UL/2018/Ntuple/"+sys.argv[2]+"/"
+
 
 entriesToRun = 0  # 0 if need to run over all entries else put number of entries to run
 isMCTrueFalse = True
@@ -59,8 +63,9 @@ else:
 p.run()
 Name_root = os.path.basename(sys.argv[1]).replace(".root","_Skim.root")
 print(Name_root)
-COMMAND_CP = ' mv '+Name_root+' /publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/'+sys.argv[2]+'_Skim/'
-print COMMAND_CP
-os.system(COMMAND_CP)
+#COMMAND_CP = ' mv '+Name_root+' /publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/'+sys.argv[2]+'_Skim/'
+#COMMAND_CP = ' mv '+Name_root+' /publicfs/cms/data/hzz/guoqy/Zprime/UL/2018/Ntuple/'+sys.argv[2]+'_Skim/'
+#print COMMAND_CP
+#os.system(COMMAND_CP)
 print "DONE"
 #os.system("ls -lR")

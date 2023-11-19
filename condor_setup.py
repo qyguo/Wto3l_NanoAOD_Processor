@@ -13,12 +13,14 @@ from color_style import style
 StringToChange = "DY_test"
 customEOS = False
 #customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /store/group/lnujj/VVjj_aQGC/custom_nanoAOD'
-customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /publicfs/cms/data/hzz/guoqy/Zprime/UL/custom_nanoAOD'
+#customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /publicfs/cms/data/hzz/guoqy/Zprime/UL/custom_nanoAOD'
+customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /eos/user/q/qguo/Zprime/UL/custom_nanoAOD'
 #InputFileFromWhereReadDASNames = 'sample_list_v7_2017_campaign.dat'
 InputFileFromWhereReadDASNames = 'sample_list_v9_UL2018_campaign_test.dat'
 
 #Initial_path = '/eos/uscms/store/user/lnujj/VVjj_aQGC/nanoAOD_skim/'
-Initial_path = '/publicfs/cms/data/hzz/guoqy/Zprime/UL/nanoAOD_skim/'
+#Initial_path = '/publicfs/cms/data/hzz/guoqy/Zprime/UL/nanoAOD_skim/'
+Initial_path = '/eos/user/q/qguo/Zprime/UL/nanoAOD_skim/'
 Initial_path += StringToChange
 condor_file_name = 'submit_condor_jobs_WTo3munu_'+StringToChange
 
