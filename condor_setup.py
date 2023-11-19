@@ -9,19 +9,18 @@ from color_style import style
 # Variables to be changed by user
 #StringToChange = "Run2016_v6_15June2020_MatteoWJetBinned"
 #StringToChange = "Run2018_v6_DataReDoJEC"
-StringToChange = "Run2017_v7_18Aug2020_Hadd"
+#StringToChange = "Run2017_v7_18Aug2020_Hadd"
+StringToChange = "DY_test"
 customEOS = False
-customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /store/group/lnujj/VVjj_aQGC/custom_nanoAOD'
-#InputFileFromWhereReadDASNames = 'sample_list_v6_2016_campaign.dat'
-#InputFileFromWhereReadDASNames = 'sample_list_v6_2017_campaign.dat'
-#InputFileFromWhereReadDASNames = 'sample_list_v6_2018_campaign.dat'
-#InputFileFromWhereReadDASNames = 'sample_list_v7_2016_campaign.dat'
-#InputFileFromWhereReadDASNames = 'sample_list_v7_2017_eos_custom.dat'
-InputFileFromWhereReadDASNames = 'sample_list_v7_2017_campaign.dat'
+#customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /store/group/lnujj/VVjj_aQGC/custom_nanoAOD'
+customEOS_cmd = 'eos root://cmseos.fnal.gov find -name "*.root" /publicfs/cms/data/hzz/guoqy/Zprime/UL/custom_nanoAOD'
+#InputFileFromWhereReadDASNames = 'sample_list_v7_2017_campaign.dat'
+InputFileFromWhereReadDASNames = 'sample_list_v9_UL2018_campaign_test.dat'
 
-Initial_path = '/eos/uscms/store/user/lnujj/VVjj_aQGC/nanoAOD_skim/'
+#Initial_path = '/eos/uscms/store/user/lnujj/VVjj_aQGC/nanoAOD_skim/'
+Initial_path = '/publicfs/cms/data/hzz/guoqy/Zprime/UL/nanoAOD_skim/'
 Initial_path += StringToChange
-condor_file_name = 'submit_condor_jobs_lnujj_'+StringToChange
+condor_file_name = 'submit_condor_jobs_WTo3munu_'+StringToChange
 
 # Create log files
 import infoCreaterGit
@@ -50,9 +49,13 @@ os.system('xrdcp -f ' + CMSSWRel+".tgz" + ' root://cmseos.fnal.gov/'+storeDir+'/
 post_proc_to_run = "post_proc.py"
 command = "python "+post_proc_to_run
 
-Transfer_Input_Files = ("Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt, " +
-                        "Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt, " +
-                        "Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt, " +
+#Transfer_Input_Files = ("Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt, " +
+#                        "Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt, " +
+#                        "Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt, " +
+#                        "keep_and_drop_data.txt")
+Transfer_Input_Files = ("Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt, " +
+                        "Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt, " +
+                        "Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt, " +
                         "keep_and_drop_data.txt")
 
 #with open('input_data_Files/sample_list_v6_2017_campaign.dat') as in_file:

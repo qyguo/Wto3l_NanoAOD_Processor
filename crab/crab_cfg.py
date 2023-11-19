@@ -24,8 +24,9 @@ config.Data.splitting = 'FileBased'
 #config.Data.splitting = 'EventAwareLumiBased'
 config.Data.unitsPerJob = 1
 
-config.Data.outLFNDirBase = '/store/user/nimenend/NanoAOD/Data/'
+#config.Data.outLFNDirBase = '/store/user/nimenend/NanoAOD/Data/'
 #config.Data.outLFNDirBase = '/store/user/%s/NanoPostTemp' % (getUsernameFromSiteDB())
+config.Data.outLFNDirBase = '/store/user/qguo/NanoAOD/Data/'
 config.Data.publication = False
 config.Data.ignoreLocality = True
 config.Data.outputDatasetTag = 'Data_NanoAOD'
